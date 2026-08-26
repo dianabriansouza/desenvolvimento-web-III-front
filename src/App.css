@@ -8,25 +8,21 @@
 
 .cabecalho { 
 
-  background-color: #1d4ed8; 
+  background-color: #931fd6; 
 
   color: #ffffff; 
 
 } 
 
- 
-
 .cabecalho-conteudo { 
 
   max-width: 1200px; 
 
-  margin: 0 auto; 
+  margin: auto; 
 
   padding: 32px 24px; 
 
 } 
-
- 
 
 .cabecalho h1 { 
 
@@ -36,8 +32,6 @@
 
 } 
 
- 
-
 .cabecalho p { 
 
   margin: 0; 
@@ -46,7 +40,6 @@
 
 } 
 
- 
 
 .conteudo-principal { 
 
@@ -58,8 +51,6 @@
 
 } 
 
- 
-
 .introducao { 
 
   margin: 0 0 32px; 
@@ -70,8 +61,19 @@
 
 } 
 
- 
-
+.botao-alternar {
+ margin: 0 0 24px;
+ padding: 10px 18px;
+ background-color: #931fd6 ;
+ color: #ffffff;
+ border: none;
+ border-radius: 6px;
+ font-size: 1rem;
+ cursor: pointer;
+}
+.botao-alternar:hover {
+ background-color:#931fd6;
+}
 .modulos { 
 
   display: grid; 
@@ -82,15 +84,13 @@
 
 } 
 
- 
-
 .card-modulo { 
 
   padding: 24px; 
 
   background-color: #ffffff; 
 
-  border-left: 5px solid #1d4ed8; 
+  border-left: 5px solid #931fd6; 
 
   border-radius: 8px; 
 
@@ -104,7 +104,7 @@
 
 } 
 
- 
+
 
 .card-modulo:hover { 
 
@@ -115,18 +115,17 @@
 } 
 
  
-
 .card-modulo h2 { 
 
   margin: 0 0 12px; 
 
-  color: #1d4ed8; 
+  color: #931fd6; 
 
   font-size: 1.4rem; 
 
 } 
 
- 
+
 
 .card-modulo p { 
 
@@ -138,7 +137,7 @@
 
 } 
 
- 
+
 
 @media (max-width: 768px) { 
 
@@ -148,7 +147,7 @@
 
   } 
 
- 
+
 
   .modulos { 
 
