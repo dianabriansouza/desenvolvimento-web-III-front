@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, useNavigate, useParams } from 'reactrouter'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 
 function EditarCliente({ clientes, aoAlterar }) {
 const { id } = useParams()

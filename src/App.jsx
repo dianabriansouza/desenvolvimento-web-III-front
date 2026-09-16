@@ -11,7 +11,7 @@ import CardModulo from './components/CardModulo'
 
 
 function App() {
-  
+
   const [mostrarModulos, setMostrarModulos] = useState(true)
   const [modulos] = useState([
     {
@@ -36,38 +36,38 @@ function App() {
       descricao: 'Registre e consulte as vendas realizadas.',
     }
   ])
-  
+
   const [clientes, setClientes] = useState(clientesIniciais)
-  
+
   function adicionarCliente(novoCliente) {
     const clienteComId = {
-            id: Date.now(),
-            ...novoCliente,
-          }
-  
-          setClientes((listaAtual) => [
-            ...listaAtual,
-            clienteComId
-          ])
-        }
-  
-        function excluirCliente(id) {
-          setClientes((listaAtual) =>
-            listaAtual.filter((cliente) => cliente.id !== id)
-        )
-      }
-      
-          function alterarCliente(clienteAtualizado) {
-             setClientes((listaAtual) =>
-              listaAtual.map((cliente) =>
-                cliente.id === clienteAtualizado.id
-                  ? clienteAtualizado
-                  : cliente
-              )
-            )
-}
-        return (
-    
+      id: Date.now(),
+      ...novoCliente,
+    }
+
+    setClientes((listaAtual) => [
+      ...listaAtual,
+      clienteComId
+    ])
+  }
+
+  function excluirCliente(id) {
+    setClientes((listaAtual) =>
+      listaAtual.filter((cliente) => cliente.id !== id)
+    )
+  }
+
+  function alterarCliente(clienteAtualizado) {
+    setClientes((listaAtual) =>
+      listaAtual.map((cliente) =>
+        cliente.id === clienteAtualizado.id
+          ? clienteAtualizado
+          : cliente
+      )
+    )
+  }
+  return (
+
     <Routes>
       {/* Rota para a página inicial */}
       <Route
@@ -75,7 +75,7 @@ function App() {
         element={
           <div className="aplicacao">
             <Cabecalho />
-            
+
             <main className="conteudo-principal">
               <p className="introducao">
                 Aplicação desenvolvida nas disciplinas de Desenvolvimento Web III e Tópicos de Programação II.
@@ -107,31 +107,32 @@ function App() {
       />
 
       {/* Rotas das páginas de clientes */}
-     <Route
-     path="/clientes"
-     element={<Clientes />}
-     />
-     
-    <Route
-      path="/clientes/listar"
-      element={<ListaClientes clientes={clientes} />}
+      <Route
+        path="/clientes"
+        element={<Clientes />}
       />
 
       <Route
-      path="/clientes/cadastrar"
-      element={<CadastroCliente aoCadastrar={adicionarCliente} />}
+        path="/clientes/listar"
+        element={
+          <ListaClientes
+            clientes={clientes}
+            aoExcluir={excluirCliente}
+          />
+        }
       />
-      
+
       <Route
-      path="/clientes/listar"
-      element={
-        <ListaClientes
-          clientes={clientes}
-          aoExcluir={excluirCliente}
-        />
-      }
-    />
-        <Route
+        path="/clientes/cadastrar"
+        element={
+          <CadastroCliente
+            clientes={clientes}
+            aoCadastrar={adicionarCliente}
+          />
+        }
+      />
+
+      <Route
         path="/clientes/editar/:id"
         element={
           <EditarCliente
@@ -140,8 +141,9 @@ function App() {
           />
         }
       />
-      
-  </Routes>
+
+
+    </Routes>
   )
 }
 

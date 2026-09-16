@@ -19,6 +19,7 @@ function ListaClientes({ clientes, aoExcluir }) {
                         <strong>{cliente.nome}</strong>
                         <span>CPF: {cliente.cpf}</span>
                         <span>E-mail: {cliente.email}</span>
+                        <span>Telefone: {cliente.telefone}</span>
 
                         <div className="acoes-cliente">
                             <Link
