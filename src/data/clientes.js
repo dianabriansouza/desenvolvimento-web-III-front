@@ -26,6 +26,14 @@ const clientesIniciais = [
     email: 'carla@email.com',
  },
 
+  {
+    id: 4,
+    nome: 'David Costa',
+    cpf: '45678901234',
+    telefone: '11954321098',
+    email: 'david@email.com',
+ },
+
 ]
 
 export default clientesIniciais

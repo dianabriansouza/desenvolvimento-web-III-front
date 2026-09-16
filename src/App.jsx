@@ -1,6 +1,7 @@
 import Clientes from './pages/Clientes'
 import ListaClientes from './pages/ListaClientes'
 import CadastroCliente from './pages/CadastroCliente'
+import EditarCliente from './pages/EditarCliente'
 import clientesIniciais from './data/clientes'
 import { useState } from 'react'
 import { Routes, Route } from 'react-router'
@@ -55,6 +56,16 @@ function App() {
             listaAtual.filter((cliente) => cliente.id !== id)
         )
       }
+      
+          function alterarCliente(clienteAtualizado) {
+             setClientes((listaAtual) =>
+              listaAtual.map((cliente) =>
+                cliente.id === clienteAtualizado.id
+                  ? clienteAtualizado
+                  : cliente
+              )
+            )
+}
         return (
     
     <Routes>
@@ -120,6 +131,16 @@ function App() {
         />
       }
     />
+        <Route
+        path="/clientes/editar/:id"
+        element={
+          <EditarCliente
+            clientes={clientes}
+            aoAlterar={alterarCliente}
+          />
+        }
+      />
+      
   </Routes>
   )
 }

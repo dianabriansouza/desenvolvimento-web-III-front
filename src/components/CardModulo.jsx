@@ -5,18 +5,18 @@ function CardModulo({ titulo, descricao, rota }) {
         <article className="card-modulo">
             <h2>{titulo}</h2>
             <p>{descricao}</p>
-        </article>
-      )
+            </article>
+        )
+
     
-    
-      if (rota) {
-      return (
-        <Link to={rota} className="link-card">
-            {conteudoCard}
-        </Link>
-     )
+        if (rota) {
+        return (
+            <Link to={rota} className="link-card">
+                {conteudoCard}
+            </Link>
+        )
     }
-    
     return conteudoCard
 }
+
 export default CardModulo
