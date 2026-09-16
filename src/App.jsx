@@ -1,6 +1,7 @@
 import Clientes from './pages/Clientes'
 import ListaClientes from './pages/ListaClientes'
 import CadastroCliente from './pages/CadastroCliente'
+import clientesIniciais from './data/clientes'
 import { useState } from 'react'
 import { Routes, Route } from 'react-router'
 import './App.css'
@@ -9,6 +10,7 @@ import CardModulo from './components/CardModulo'
 
 
 function App() {
+  
   const [mostrarModulos, setMostrarModulos] = useState(true)
   const [modulos] = useState([
     {
@@ -33,8 +35,28 @@ function App() {
       descricao: 'Registre e consulte as vendas realizadas.',
     }
   ])
-
-  return (
+  
+  const [clientes, setClientes] = useState(clientesIniciais)
+  
+  function adicionarCliente(novoCliente) {
+    const clienteComId = {
+            id: Date.now(),
+            ...novoCliente,
+          }
+  
+          setClientes((listaAtual) => [
+            ...listaAtual,
+            clienteComId
+          ])
+        }
+  
+        function excluirCliente(id) {
+          setClientes((listaAtual) =>
+            listaAtual.filter((cliente) => cliente.id !== id)
+        )
+      }
+        return (
+    
     <Routes>
       {/* Rota para a página inicial */}
       <Route
@@ -74,17 +96,30 @@ function App() {
       />
 
       {/* Rotas das páginas de clientes */}
-      <Route path="/clientes" element={<Clientes />} />
-      <Route
-        path="/clientes/listar"
-        element={<ListaClientes />}
+     <Route
+     path="/clientes"
+     element={<Clientes />}
+     />
+     
+    <Route
+      path="/clientes/listar"
+      element={<ListaClientes clientes={clientes} />}
       />
 
       <Route
-        path="/clientes/cadastrar"
-        element={<CadastroCliente />}
-      
+      path="/clientes/cadastrar"
+      element={<CadastroCliente aoCadastrar={adicionarCliente} />}
       />
+      
+      <Route
+      path="/clientes/listar"
+      element={
+        <ListaClientes
+          clientes={clientes}
+          aoExcluir={excluirCliente}
+        />
+      }
+    />
   </Routes>
   )
 }
